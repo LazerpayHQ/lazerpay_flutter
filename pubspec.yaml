@@ -1,0 +1,33 @@
+name: lazerpay_flutter
+description: Official plugin for using LazerPay SDK with flutter https://lazerpay.finance
+version: 1.0.0
+homepage: https://github.com/LazerPay-Finance/lazerpay_flutter
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  connectivity_plus: ^2.1.0
+  equatable: ^2.0.3
+  flutter_svg: ^0.23.0+1
+  gap: ^2.0.0
+  modal_bottom_sheet: ^2.0.0
+  webview_flutter: ^3.0.0
+  url_launcher: ^6.0.15
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - packages/lazerpay_flutter/assets/images/logo.svg
+    - packages/lazerpay_flutter/assets/images/close.svg
+
+  fonts:
+    - family: Sohne-Buch
+      fonts:
+        - asset: packages/lazerpay_flutter/assets/fonts/Sohne-Buch.ttf
+          weight: 500

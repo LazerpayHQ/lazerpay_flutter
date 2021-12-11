@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazerpay</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/LazerPay-Finance/checkout-build@main/checkout@1.0.1/dist/index.js"
+      type="text/javascript"
+    >
+  </script>
+  </head>
+
+  <body
+    onload="setupLazerCheckout()"
+    style="
+      border-radius: 20px;
+      background-color: #fff;
+      height: 100vh;
+      overflow: hidden;
+    "
+  >
+    <script type="text/javascript">
+      window.onload = setupLazerCheckout;
+
+
+      function setupLazerCheckout() {
+        LazerCheckout({
+          name: "Joel",
+          email: "test@gmail.com",
+          amount: "1000",
+          key: "pk_live_0N24k7lsrr7NGfrDQpIjPGy9z61LkXjUqxX3r99XblXHemwMht",
+          currency: "NGN",
+          onClose: (data) =>
+            sendMessage({
+              type: "$ON_CLOSE",
+            }),
+          callback: (data) =>
+            sendMessage({
+              type: "$ON_SUCCESS",
+              data: { ...data },
+            }),
+          onError: (data) =>
+            sendMessage({
+              type: "$ON_ERROR",
+              data: { ...data },
+            }),
+        });
+
+        // Add EventListener for onMessage Event
+        window.addEventListener("message", (event) => {
+          sendMessage(event.data);
+        });
+
+        // Send callback to dart JSMessageClient
+        function sendMessage(message) {
+          console.log(JSON.stringify(message));
+        }
+
+        // Send raw callback to dart JSMessageClient
+        function sendMessageRaw(message) {
+          console.log(message);
+        }
+
+    
+      }
+    </script>
+  </body>
+</html>
