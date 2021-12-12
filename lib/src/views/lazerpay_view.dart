@@ -17,7 +17,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:lazerpay_flutter/src/utils/extensions.dart';
 import 'package:lazerpay_flutter/src/views/lazerpay_error_view.dart';
 
-class LazerPaySendView extends StatefulWidget {
+class LazerPayView extends StatefulWidget {
   /// Public Key from your https://app.withLazerPay.com/apps
   final LazerPayData data;
 
@@ -33,13 +33,13 @@ class LazerPaySendView extends StatefulWidget {
   /// Error Widget will show if loading fails
   final Widget? errorWidget;
 
-  /// Show LazerPaySendView Logs
+  /// Show LazerPayView Logs
   final bool showLogs;
 
   /// Toggle dismissible mode
   final bool isDismissible;
 
-  const LazerPaySendView({
+  const LazerPayView({
     Key? key,
     required this.data,
     this.errorWidget,
@@ -74,7 +74,7 @@ class LazerPaySendView extends StatefulWidget {
                 Center(
                   child: SizedBox(
                     height: context.screenHeight(.9),
-                    child: LazerPaySendView(
+                    child: LazerPayView(
                       data: data,
                       onClosed: onClosed,
                       onSuccess: onSuccess,
@@ -91,10 +91,10 @@ class LazerPaySendView extends StatefulWidget {
       );
 
   @override
-  _LazerPaySendViewState createState() => _LazerPaySendViewState();
+  _LazerPayViewState createState() => _LazerPayViewState();
 }
 
-class _LazerPaySendViewState extends State<LazerPaySendView> {
+class _LazerPayViewState extends State<LazerPayView> {
   final _controller = Completer<WebViewController>();
   Future<WebViewController> get _webViewController => _controller.future;
 

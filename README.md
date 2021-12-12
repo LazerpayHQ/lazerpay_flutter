@@ -26,19 +26,19 @@ dependencies {
 
 ### LazerPay Send
 
-- Launch LazerPaySendView in a bottom_sheet
+- Launch LazerSendView in a bottom_sheet
 
 ```dart
 import 'package:lazerpay_flutter/lazerpay_flutter.dart';
     
   void launch() async {
-      await LazerPaySendView(
+      await LazerPayView(
             data: LazerPayData(
                publicKey: "pk_live_...",
                name: "Package Free",
                email: "test@gmail.com",
                amount: 1000,
-               currency: LazerPayCurency.NGN,
+               currency: LazerPayCurency.USD,
             ),
             showLogs: true,
             onClosed: () {
@@ -62,7 +62,7 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
     
      ...
 
-     LazerPaySendView(
+     LazerPayView(
          data: LazerPayData(
             publicKey: "pk_live_...",
             name: "Package Free",

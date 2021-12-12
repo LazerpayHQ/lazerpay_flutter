@@ -76,10 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     onPressed: () async {
-                      await LazerPaySendView(
+                      await LazerPayView(
                         data: LazerPayData(
-                          publicKey:
-                              "pk_live_...",
+                          publicKey: "pk_live_...",
                           name: "Package Free",
                           email: "chiziaruhoma@gmail.com",
                           amount: 1000,
