@@ -14,6 +14,7 @@ This package makes it easy to use the LazerPay in a flutter project.
 ### 🚀 How to Use plugin
 
 ### Adding MaterialSupport
+
 Add the dependency on Android’s Material in <my-app>/android/app/build.gradle:
 
 ```
@@ -30,12 +31,12 @@ dependencies {
 
 ```dart
 import 'package:lazerpay_flutter/lazerpay_flutter.dart';
-    
+
   void launch() async {
       await LazerPayView(
             data: LazerPayData(
                publicKey: "pk_live_...",
-               name: "Package Free",
+               name: "Chizo Ozioma",
                email: "test@gmail.com",
                amount: 1000,
                currency: LazerPayCurency.USD,
@@ -54,12 +55,11 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
   }
 ```
 
-
 - Use LazerPayView widget
 
 ```dart
 import 'package:lazerpay_flutter/lazerpay_flutter.dart';
-    
+
      ...
 
      LazerPayView(
@@ -75,7 +75,7 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
             print('Widget closed')
          },
          onSuccess: (data) {
-            print(data); 
+            print(data);
             Navigator.pop(context);
          },
          onError: print,
@@ -83,9 +83,11 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
       )
 
       ...
-  
+
 ```
---- 
+
+---
 
 ## ✨ Contribution
- Lots of PR's would be needed to improve this plugin. So lots of suggestions and PRs are welcome.
+
+Lots of PR's would be needed to improve this plugin. So lots of suggestions and PRs are welcome.

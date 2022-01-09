@@ -78,10 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () async {
                       await LazerPayView(
                         data: LazerPayData(
-                          publicKey: "pk_live_...",
-                          name: "Package Free",
+                          publicKey: "pk_live_0N24k7lsrr7NGfrDQpIjPGy9z61LkXjUqxX3r99XblXHemwMht",
+                          name: "Njoku Emmanuel",
                           email: "chiziaruhoma@gmail.com",
-                          amount: 1000,
+                          amount: 2000,
                           currency: LazerPayCurency.NGN,
                         ),
                         showLogs: true,
