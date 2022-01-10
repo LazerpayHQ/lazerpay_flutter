@@ -56,7 +56,7 @@ class LazerPayHtml {
               onClose: (data) => sendMessage({
                     "type": "$ON_CLOSE",
                   }),
-              callback: (data) => sendMessage({
+              onSuccess: (data) => sendMessage({
                     "type": "$ON_SUCCESS",
                     "data": { ...data },
                   }),
