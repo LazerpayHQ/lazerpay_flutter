@@ -12,7 +12,7 @@ class LazerPayHtml {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lazerpay</title>
-    <script src="https://cdn.jsdelivr.net/gh/LazerPay-Finance/checkout-build@main/checkout@1.0.1/dist/index.js"type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/gh/LazerPay-Finance/checkout-build@main/checkout%401.0.1/dist/index.min.js"type="text/javascript"></script>
 </head>
 
 <body onload="setupLazerCheckout()" style="border-radius: 20px; background-color:#fff;height:100vh;overflow: hidden; ">
@@ -32,20 +32,20 @@ class LazerPayHtml {
                 sendMessageRaw(msg);
                 console._error_old(msg);
             }
-            
+
             // Send callback to dart JSMessageClient
             function sendMessage(message) {
                 if (window.LazerPayClientInterface && window.LazerPayClientInterface.postMessage) {
                     LazerPayClientInterface.postMessage(JSON.stringify(message));
                 }
-            } 
+            }
 
             // Send raw callback to dart JSMessageClient
             function sendMessageRaw(message) {
                 if (window.LazerPayClientInterface && window.LazerPayClientInterface.postMessage) {
                     LazerPayClientInterface.postMessage(message);
                 }
-            } 
+            }
 
              LazerCheckout({
               name: "${data.name}",
