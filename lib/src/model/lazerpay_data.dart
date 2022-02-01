@@ -23,7 +23,7 @@ class LazerPayData with EquatableMixin {
   final LazerPayCurency currency;
 
   /// Customers User reference
-  final String userReference;
+  final String reference;
 
   /// Lazerpay currency type as String
   String get currencyString => describeEnum(currency);
@@ -35,7 +35,7 @@ class LazerPayData with EquatableMixin {
     required this.name,
     required this.email,
     required this.amount,
-    this.userReference,
+    this.reference,
     this.currency = LazerPayCurency.NGN,
   });
 
@@ -45,7 +45,7 @@ class LazerPayData with EquatableMixin {
     String? firstName,
     int? amount,
     LazerPayCurency? currency,
-    String? userReference,
+    String? reference,
     String? email,
   }) {
     return LazerPayData(
@@ -53,7 +53,7 @@ class LazerPayData with EquatableMixin {
       name: name ?? this.name,
       amount: amount ?? this.amount,
       email: email ?? this.email,
-      userReference: userReference ?? this.userReference,
+      reference: reference ?? this.reference,
       currency: currency ?? this.currency,
     );
   }
@@ -64,7 +64,7 @@ class LazerPayData with EquatableMixin {
       'name': name,
       'amount': amount,
       'email': email,
-      'userReference': userReference,
+      'reference': reference,
       'currency': describeEnum(currency),
     };
   }
@@ -75,7 +75,7 @@ class LazerPayData with EquatableMixin {
       name: map['name'],
       amount: map['amount'],
       email: map['email'],
-      userReference: map['userReference'],
+      reference: map['reference'],
       currency: map['currency'],
     );
   }
@@ -94,7 +94,7 @@ class LazerPayData with EquatableMixin {
         name,
         amount,
         email,
-        userReference,
+        reference,
         currency,
       ];
 }
