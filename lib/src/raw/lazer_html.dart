@@ -52,6 +52,7 @@ class LazerPayHtml {
               email: "${data.email}",
               amount: "${data.amount}",
               key: "${data.publicKey}",
+              userReference: "${data.userReference}",
               currency: "${data.currencyString}",
               onClose: (data) => sendMessage({
                     "type": "$ON_CLOSE",
