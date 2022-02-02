@@ -22,7 +22,7 @@ class LazerPayData with EquatableMixin {
   /// Lazerpay currency type
   final LazerPayCurency currency;
 
-  /// Customers User reference
+  /// Unique transaction reference
   final String reference;
 
   /// Lazerpay currency type as String

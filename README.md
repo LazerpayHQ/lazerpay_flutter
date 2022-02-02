@@ -36,6 +36,7 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
       await LazerPayView(
             data: LazerPayData(
                publicKey: "pk_live_...",
+               reference: 'YOUR_REFERENCE', // Replace with a reference you generated
                name: "Chizo Ozioma",
                email: "test@gmail.com",
                amount: 1000,
@@ -65,6 +66,7 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
      LazerPayView(
          data: LazerPayData(
             publicKey: "pk_live_...",
+            reference: 'YOUR_REFERENCE', // Replace with a reference you generated
             name: "Package Free",
             email: "test@gmail.com",
             amount: 1000,
