@@ -53,6 +53,7 @@ class LazerPayHtml {
               amount: "${data.amount}",
               key: "${data.publicKey}",
               reference: "${data.reference}",
+              acceptPartialPayment: ${data.acceptPartialPayment},
               currency: "${data.currencyString}",
               onClose: (data) => sendMessage({
                     "type": "$ON_CLOSE",

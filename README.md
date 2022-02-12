@@ -41,6 +41,7 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
                email: "test@gmail.com",
                amount: 1000,
                currency: LazerPayCurency.USD,
+               acceptPartialPayment: true // By default it's false
             ),
             showLogs: true,
             onClosed: () {
@@ -71,6 +72,7 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
             email: "test@gmail.com",
             amount: 1000,
             currency: LazerPayCurency.NGN,
+            acceptPartialPayment: true // By default it's false
          ),
          onClosed: () {
             Navigator.pop(context);
@@ -101,6 +103,7 @@ The Transaction JSON returned for successful events
     "actualAmount": 10,
     "amountPaid": 10,
     "fiatAmount": 10,
+    "feeInCrypto": 0.17,
     "coin": "BUSD",
     "currency": "USD",
     "hash": "0x3332d7b046d53e90dc0337c715252f210386c2a471c5025c953a0b1d9bc90593",
@@ -108,6 +111,7 @@ The Transaction JSON returned for successful events
     "type": "received",
     "status": "confirmed",
     "network": "mainnet",
+    "acceptPartialPayment": true,
     "blockchain": "Binance Smart Chain",
     "customer": {
       "id": "b847dbbd-e5a4-4afc-ba26-b292707dc391",
