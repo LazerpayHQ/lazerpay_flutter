@@ -123,11 +123,6 @@ The Transaction JSON returned for successful events
   }
 }
 ```
-    
-### NOTE
-`reference` has to be updated after any successful partial payment to enable re-initialization.
-
----
 
 ## ✨ Contribution
 
