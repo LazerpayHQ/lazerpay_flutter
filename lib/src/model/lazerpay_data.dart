@@ -38,8 +38,8 @@ class LazerPayData with EquatableMixin {
     required this.name,
     required this.email,
     required this.amount,
-    this.reference,
-    this.acceptPartialPayment,
+    this.reference = '',
+    this.acceptPartialPayment = false,
     this.currency = LazerPayCurency.NGN,
   });
 
