@@ -23,6 +23,9 @@ class LazerPayData with EquatableMixin {
   final LazerPayCurency currency;
 
   /// Unique transaction reference
+  final bool acceptPartialPayment;
+
+  /// Accept partial payments
   final String reference;
 
   /// Lazerpay currency type as String
@@ -36,6 +39,7 @@ class LazerPayData with EquatableMixin {
     required this.email,
     required this.amount,
     this.reference,
+    this.acceptPartialPayment,
     this.currency = LazerPayCurency.NGN,
   });
 
@@ -46,6 +50,7 @@ class LazerPayData with EquatableMixin {
     int? amount,
     LazerPayCurency? currency,
     String? reference,
+    bool? acceptPartialPayment,
     String? email,
   }) {
     return LazerPayData(
@@ -55,6 +60,7 @@ class LazerPayData with EquatableMixin {
       email: email ?? this.email,
       reference: reference ?? this.reference,
       currency: currency ?? this.currency,
+      acceptPartialPayment: acceptPartialPayment ?? this.acceptPartialPayment,
     );
   }
 
@@ -66,6 +72,7 @@ class LazerPayData with EquatableMixin {
       'email': email,
       'reference': reference,
       'currency': describeEnum(currency),
+      'acceptPartialPayment': acceptPartialPayment,
     };
   }
 
@@ -77,6 +84,7 @@ class LazerPayData with EquatableMixin {
       email: map['email'],
       reference: map['reference'],
       currency: map['currency'],
+      acceptPartialPayment: map['acceptPartialPayment'],
     );
   }
 
@@ -96,5 +104,6 @@ class LazerPayData with EquatableMixin {
         email,
         reference,
         currency,
+        acceptPartialPayment,
       ];
 }

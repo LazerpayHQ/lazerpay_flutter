@@ -12,7 +12,7 @@ class LazerPayHtml {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lazerpay</title>
-    <script src="https://cdn.jsdelivr.net/gh/LazerPay-Finance/checkout-build@main/checkout%401.0.1/dist/index.min.js"type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/gh/LazerPay-Finance/checkout-build@main/checkout%401.0.1/dist/index.js"type="text/javascript"></script>
 </head>
 
 <body onload="setupLazerCheckout()" style="border-radius: 20px; background-color:#fff;height:100vh;overflow: hidden; ">
@@ -53,6 +53,7 @@ class LazerPayHtml {
               amount: "${data.amount}",
               key: "${data.publicKey}",
               reference: "${data.reference}",
+              acceptPartialPayment: ${data.acceptPartialPayment},
               currency: "${data.currencyString}",
               onClose: (data) => sendMessage({
                     "type": "$ON_CLOSE",
