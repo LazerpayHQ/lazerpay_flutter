@@ -25,6 +25,12 @@ class LazerPayData with EquatableMixin {
   /// Lazerpay currency type
   final LazerPayCurency currency;
 
+  /// Unique transaction reference
+  final bool acceptPartialPayment;
+
+  /// Accept partial payments
+  final String reference;
+
   /// Lazerpay currency type as String
   String get currencyString => describeEnum(currency);
 
@@ -36,6 +42,8 @@ class LazerPayData with EquatableMixin {
     required this.email,
     required this.amount,
     this.businessLogo,
+    this.reference = '',
+    this.acceptPartialPayment = false,
     this.currency = LazerPayCurency.NGN,
   });
 
@@ -45,6 +53,8 @@ class LazerPayData with EquatableMixin {
     String? firstName,
     int? amount,
     LazerPayCurency? currency,
+    String? reference,
+    bool? acceptPartialPayment,
     String? email,
   }) {
     return LazerPayData(
@@ -53,7 +63,9 @@ class LazerPayData with EquatableMixin {
       amount: amount ?? this.amount,
       email: email ?? this.email,
       businessLogo: email ?? this.businessLogo,
+      reference: reference ?? this.reference,
       currency: currency ?? this.currency,
+      acceptPartialPayment: acceptPartialPayment ?? this.acceptPartialPayment,
     );
   }
 
@@ -64,7 +76,9 @@ class LazerPayData with EquatableMixin {
       'businessLogo': businessLogo,
       'amount': amount,
       'email': email,
+      'reference': reference,
       'currency': describeEnum(currency),
+      'acceptPartialPayment': acceptPartialPayment,
     };
   }
 
@@ -73,9 +87,12 @@ class LazerPayData with EquatableMixin {
       name: map['name'],
       email: map['email'],
       amount: map['amount'],
-      currency: map['currency'],
       publicKey: map['publicKey'],
       businessLogo: map['businessLogo'],
+      reference: map['reference'],
+      currency:
+          map['currency'] == 'NGN' ? LazerPayCurency.NGN : LazerPayCurency.USD,
+      acceptPartialPayment: map['acceptPartialPayment'],
     );
   }
 
@@ -93,7 +110,9 @@ class LazerPayData with EquatableMixin {
         name,
         amount,
         email,
+        reference,
         currency,
         businessLogo ?? '',
+        acceptPartialPayment,
       ];
 }

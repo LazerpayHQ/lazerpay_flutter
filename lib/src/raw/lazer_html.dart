@@ -32,32 +32,34 @@ class LazerPayHtml {
                 sendMessageRaw(msg);
                 console._error_old(msg);
             }
-            
+
             // Send callback to dart JSMessageClient
             function sendMessage(message) {
                 if (window.LazerPayClientInterface && window.LazerPayClientInterface.postMessage) {
                     LazerPayClientInterface.postMessage(JSON.stringify(message));
                 }
-            } 
+            }
 
             // Send raw callback to dart JSMessageClient
             function sendMessageRaw(message) {
                 if (window.LazerPayClientInterface && window.LazerPayClientInterface.postMessage) {
                     LazerPayClientInterface.postMessage(message);
                 }
-            } 
+            }
 
              LazerCheckout({
               name: "${data.name}",
               email: "${data.email}",
               amount: "${data.amount}",
               key: "${data.publicKey}",
+              reference: "${data.reference}",
+              acceptPartialPayment: ${data.acceptPartialPayment},
               currency: "${data.currencyString}",
               ${data.businessLogo != null || data.businessLogo!.isEmpty ? 'businessLogo: "${data.businessLogo}"' : ''},
               onClose: (data) => sendMessage({
                     "type": "$ON_CLOSE",
                   }),
-              callback: (data) => sendMessage({
+              onSuccess: (data) => sendMessage({
                     "type": "$ON_SUCCESS",
                     "data": { ...data },
                   }),

@@ -78,9 +78,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () async {
                       await LazerPayView(
                         data: LazerPayData(
-                          publicKey: "pk_live_...",
-                          name: "Package Free",
-                          email: "chiziaruhoma@gmail.com",
+                          publicKey: "pk_live_0N24k7lsrr7NGfrDQpIjPGy9z61LkXjUqxX3r99XblXHemwMht",
+                          name: "Njoku Favour",
+                          email: "test@gmail.com",
                           amount: 1000,
                           businessLogo: 'https://assets.audiomack.com/fireboydml/bbbd8710eff038d4f603cc39ec94a6a6c2c5b6f4100b28d62557d10d87246f27.jpeg?width=340&height=340&max=true',
                           currency: LazerPayCurency.NGN,
