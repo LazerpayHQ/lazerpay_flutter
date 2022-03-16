@@ -29,8 +29,8 @@ class LazerPayButton extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(6),
         child: Container(
-          color:
-              (buttonColor ?? lazerpayBlue).withOpacity(enabled == true ? 1 : 0.3),
+          color: (buttonColor ?? lazerpayBlue)
+              .withOpacity(enabled == true ? 1 : 0.3),
           padding: const EdgeInsets.all(18),
           child: Center(
             child: Text(

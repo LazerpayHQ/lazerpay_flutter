@@ -43,7 +43,6 @@ class LazerPayErrorView extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             physics: const BouncingScrollPhysics(),
             children: [
-            
               const Gap(45),
               const Center(
                 child: Text(
