@@ -16,6 +16,9 @@ class LazerPayData with EquatableMixin {
   /// This users email
   final String email;
 
+  /// Your business' businessLogo
+  final String? businessLogo;
+
   /// The amount
   final int amount;
 
@@ -32,6 +35,7 @@ class LazerPayData with EquatableMixin {
     required this.name,
     required this.email,
     required this.amount,
+    this.businessLogo,
     this.currency = LazerPayCurency.NGN,
   });
 
@@ -48,6 +52,7 @@ class LazerPayData with EquatableMixin {
       name: name ?? this.name,
       amount: amount ?? this.amount,
       email: email ?? this.email,
+      businessLogo: email ?? this.businessLogo,
       currency: currency ?? this.currency,
     );
   }
@@ -56,6 +61,7 @@ class LazerPayData with EquatableMixin {
     return {
       'publicKey': publicKey,
       'name': name,
+      'businessLogo': businessLogo,
       'amount': amount,
       'email': email,
       'currency': describeEnum(currency),
@@ -64,11 +70,12 @@ class LazerPayData with EquatableMixin {
 
   factory LazerPayData.fromMap(Map<String, dynamic> map) {
     return LazerPayData(
-      publicKey: map['publicKey'],
       name: map['name'],
-      amount: map['amount'],
       email: map['email'],
+      amount: map['amount'],
       currency: map['currency'],
+      publicKey: map['publicKey'],
+      businessLogo: map['businessLogo'],
     );
   }
 
@@ -87,5 +94,6 @@ class LazerPayData with EquatableMixin {
         amount,
         email,
         currency,
+        businessLogo ?? '',
       ];
 }

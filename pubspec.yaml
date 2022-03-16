@@ -13,8 +13,8 @@ dependencies:
   equatable: ^2.0.3
   flutter_svg: ^0.23.0+1
   gap: ^2.0.0
-  modal_bottom_sheet: ^2.0.0
-  webview_flutter: ^3.0.0
+  modal_bottom_sheet: ^2.0.1
+  webview_flutter: ^3.0.1
   url_launcher: ^6.0.15
 
 dev_dependencies:

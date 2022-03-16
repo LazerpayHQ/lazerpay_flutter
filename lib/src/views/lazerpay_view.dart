@@ -47,11 +47,11 @@ class LazerPayView extends StatefulWidget {
     this.onClosed,
     this.onError,
     this.showLogs = false,
-    this.isDismissible = true,
+    this.isDismissible = false,
   }) : super(key: key);
 
   /// Show Dialog with a custom child
-  Future show(BuildContext context) => showMaterialModalBottomSheet<void>(
+  Future show(BuildContext context) => showCupertinoModalBottomSheet<void>(
         backgroundColor: Colors.white,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -60,6 +60,7 @@ class LazerPayView extends StatefulWidget {
           ),
         ),
         isDismissible: isDismissible,
+        enableDrag: isDismissible,
         context: context,
         builder: (context) => ClipRRect(
           borderRadius: const BorderRadius.only(
@@ -102,21 +103,21 @@ class _LazerPayViewState extends State<LazerPayView> {
   bool get isLoading => _isLoading;
   set isLoading(bool val) {
     _isLoading = val;
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   bool _hasError = false;
   bool get hasError => _hasError;
   set hasError(bool val) {
     _hasError = val;
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   int? _loadingPercent;
   int? get loadingPercent => _loadingPercent;
   set loadingPercent(int? val) {
     _loadingPercent = val;
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   @override
@@ -151,6 +152,7 @@ class _LazerPayViewState extends State<LazerPayView> {
             final createUrl = LazerPayHtml.buildLazerPayHtml(
               widget.data,
             );
+
             return Stack(
               alignment: Alignment.center,
               children: [

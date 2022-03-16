@@ -82,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           name: "Package Free",
                           email: "chiziaruhoma@gmail.com",
                           amount: 1000,
+                          businessLogo: 'https://assets.audiomack.com/fireboydml/bbbd8710eff038d4f603cc39ec94a6a6c2c5b6f4100b28d62557d10d87246f27.jpeg?width=340&height=340&max=true',
                           currency: LazerPayCurency.NGN,
                         ),
                         showLogs: true,
