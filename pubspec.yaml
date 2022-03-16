@@ -1,6 +1,6 @@
 name: lazerpay_flutter
 description: Official plugin for using LazerPay SDK with flutter https://lazerpay.finance
-version: 1.0.2
+version: 1.0.2+1
 homepage: https://github.com/LazerPay-Finance/lazerpay_flutter
 
 environment:
