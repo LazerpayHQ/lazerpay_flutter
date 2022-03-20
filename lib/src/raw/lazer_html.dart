@@ -17,6 +17,44 @@ class LazerPayHtml {
 
 <body onload="setupLazerCheckout()" style="border-radius: 20px; background-color:#fff;height:100vh;overflow: hidden; ">
     <script type="text/javascript">
+
+
+        // Send callback to dart JSMessageClient
+          function sendMessage(message) {
+              if (window.LazerPayClientInterface && window.LazerPayClientInterface.postMessage) {
+                  sendMessageRaw(JSON.stringify(message));
+              }
+          }
+
+        // Send raw callback to dart JSMessageClient
+          function sendMessageRaw(message) {
+              if (window.LazerPayClientInterface && window.LazerPayClientInterface.postMessage) {
+                  LazerPayClientInterface.postMessage(message);
+              }
+          }
+        
+        // Override JS Fetch
+        (function (ns, fetch) {
+          if (typeof fetch !== 'function') return;
+
+          ns.fetch = function () {
+            var out = fetch.apply(this, arguments);
+
+            // side-effect
+
+            out.then(async (ok) => {
+              var data = await ok.clone().json();
+              sendMessage({
+                  "type": "$ON_FETCH",
+                  "data": { ...data },
+              })
+            });
+
+            return out;
+          }
+
+        }(window, window.fetch))
+
         window.onload = setupLazerCheckout;
         function setupLazerCheckout() {
 
@@ -31,20 +69,6 @@ class LazerPayHtml {
             console.error = function(msg) {
                 sendMessageRaw(msg);
                 console._error_old(msg);
-            }
-
-            // Send callback to dart JSMessageClient
-            function sendMessage(message) {
-                if (window.LazerPayClientInterface && window.LazerPayClientInterface.postMessage) {
-                    LazerPayClientInterface.postMessage(JSON.stringify(message));
-                }
-            }
-
-            // Send raw callback to dart JSMessageClient
-            function sendMessageRaw(message) {
-                if (window.LazerPayClientInterface && window.LazerPayClientInterface.postMessage) {
-                    LazerPayClientInterface.postMessage(message);
-                }
             }
 
              LazerCheckout({
@@ -69,7 +93,13 @@ class LazerPayHtml {
                   }),
             });
 
+        // Add EventListener for onMessage Event
+          window.addEventListener("click", (event) => {
 
+          let path = event.composedPath()[0].innerHTML;
+          if (path == "Copied" || path == "Copy" || path == "")
+              sendMessage({"type": "$ON_COPY", "data": path}) 
+          });
         }
     </script>
 </body>

@@ -89,12 +89,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           currency: LazerPayCurency.NGN,
                         ),
                         showLogs: true,
-                        onClosed: () {
-                          print('closed');
+                        onInitialize: (data) {
+                          print('initialized');
+                        },
+                        onSuccess: (data) {
+                          print(data.toString());
                           Navigator.pop(context);
                         },
-                        onSuccess: (v) {
-                          print(v.toString());
+                        onClosed: () {
+                          print('closed');
                           Navigator.pop(context);
                         },
                         onError: print,

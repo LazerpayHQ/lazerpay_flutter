@@ -18,14 +18,41 @@
       overflow: hidden;
     ">
   <script type="text/javascript">
+
+    // Send callback to dart JSMessageClient
+    function sendMessage(message) {
+      console.log(JSON.stringify(message));
+    }
+
+    // Send raw callback to dart JSMessageClient
+    function sendMessageRaw(message) {
+      console.log(message);
+    }
+
+
+
+    (function (ns, fetch) {
+      if (typeof fetch !== 'function') return;
+
+      ns.fetch = function () {
+        var out = fetch.apply(this, arguments);
+
+        // side-effect
+
+        out.then(async (ok) => {
+          var data = await ok.clone().json();
+          sendMessage(data)
+        });
+
+
+
+        return out;
+      }
+
+    }(window, window.fetch))
+
     window.onload = setupLazerCheckout;
 
-
-    window.parent.addEventListener('copy', function (e) {
-      e.clipboardData.setData(e.type, e.data);
-      console.log(e.clipboardData.getData(e.type));
-      e.preventDefault(); // We want our data, not data from any selection, to be written to the clipboard
-    });
 
 
     function setupLazerCheckout() {
@@ -55,16 +82,6 @@
       window.addEventListener("message", (event) => {
         sendMessage(event.data);
       });
-
-      // Send callback to dart JSMessageClient
-      function sendMessage(message) {
-        console.log(JSON.stringify(message));
-      }
-
-      // Send raw callback to dart JSMessageClient
-      function sendMessageRaw(message) {
-        console.log(message);
-      }
 
 
     }

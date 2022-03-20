@@ -44,6 +44,9 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
                acceptPartialPayment: true // By default it's false
             ),
             showLogs: true,
+            onInitialize: (data) {
+               print('initialized');
+            },
             onClosed: () {
                print('closed');
                Navigator.pop(context);

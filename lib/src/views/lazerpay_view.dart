@@ -8,7 +8,9 @@ import 'package:flutter/services.dart';
 import 'package:lazerpay_flutter/src/model/lazerpay_data.dart';
 import 'package:lazerpay_flutter/src/model/lazerpay_event_model.dart';
 import 'package:lazerpay_flutter/src/raw/lazer_html.dart';
+import 'package:lazerpay_flutter/src/utils/colors.dart';
 import 'package:lazerpay_flutter/src/utils/functions.dart';
+import 'package:lazerpay_flutter/src/utils/pretty_json.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:lazerpay_flutter/src/const/const.dart';
 import 'package:lazerpay_flutter/src/widgets/lazerpay_loader.dart';
@@ -17,9 +19,14 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:lazerpay_flutter/src/utils/extensions.dart';
 import 'package:lazerpay_flutter/src/views/lazerpay_error_view.dart';
 
+import '../model/lazerpay_initialize_model.dart';
+
 class LazerPayView extends StatefulWidget {
   /// Public Key from your https://app.withLazerPay.com/apps
   final LazerPayData data;
+
+  /// initialize callback
+  final ValueChanged<LazerpayInitializeModel>? onInitialize;
 
   /// Success callback
   final ValueChanged<dynamic>? onSuccess;
@@ -46,6 +53,7 @@ class LazerPayView extends StatefulWidget {
     this.onSuccess,
     this.onClosed,
     this.onError,
+    this.onInitialize,
     this.showLogs = false,
     this.isDismissible = false,
   }) : super(key: key);
@@ -79,6 +87,7 @@ class LazerPayView extends StatefulWidget {
                       data: data,
                       onClosed: onClosed,
                       onSuccess: onSuccess,
+                      onInitialize: onInitialize,
                       onError: onError,
                       showLogs: showLogs,
                       errorWidget: errorWidget,
@@ -98,6 +107,13 @@ class LazerPayView extends StatefulWidget {
 class _LazerPayViewState extends State<LazerPayView> {
   final _controller = Completer<WebViewController>();
   Future<WebViewController> get _webViewController => _controller.future;
+
+  LazerpayInitializeModel? _initializeModel;
+  LazerpayInitializeModel? get initializeModel => _initializeModel;
+  set initializeModel(LazerpayInitializeModel? val) {
+    _initializeModel = val;
+    if (mounted) setState(() {});
+  }
 
   bool _isLoading = true;
   bool get isLoading => _isLoading;
@@ -202,8 +218,6 @@ class _LazerPayViewState extends State<LazerPayView> {
           name: 'LazerPayClientInterface',
           onMessageReceived: (JavascriptMessage data) {
             try {
-              if (widget.showLogs)
-                LazerPayFunctions.log('Event: -> ${data.message}');
               _handleResponse(data.message);
             } on Exception {
               if (mounted && widget.onClosed != null) {
@@ -219,8 +233,10 @@ class _LazerPayViewState extends State<LazerPayView> {
   /// Parse event from javascript channel
   void _handleResponse(String res) async {
     try {
-      final data = LazerPayEventModel.fromJson(res);
-      switch (data.type) {
+      final event = LazerPayEventModel.fromJson(res);
+
+      if (widget.showLogs) LazerPayFunctions.log('Event: -> ${event.type}');
+      switch (event.type) {
         case ON_SUCCESS:
           if (widget.onSuccess != null) {
             widget.onSuccess!(
@@ -232,6 +248,37 @@ class _LazerPayViewState extends State<LazerPayView> {
           if (mounted && widget.onClosed != null) {
             widget.onClosed!();
           }
+          return;
+        case ON_FETCH:
+          if (res.contains('initialized')) {
+            final data = LazerpayInitializeModel.fromMap(event.data);
+            if (widget.onInitialize != null) {
+              widget.onInitialize!(data);
+            }
+            initializeModel = data;
+          }
+          return;
+        case ON_COPY:
+          Clipboard.setData(
+            ClipboardData(text: initializeModel?.data.address ?? ''),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            elevation: 1,
+            backgroundColor: lazerpayBlue.withOpacity(.6),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            content: Container(
+              height: 20,
+              child: Center(
+                child: Text(
+                  'Copied Address',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            margin: EdgeInsets.symmetric(horizontal: 140, vertical: 40),
+            behavior: SnackBarBehavior.floating,
+          ));
           return;
         default:
           if (mounted && widget.onError != null) widget.onError!(res);
