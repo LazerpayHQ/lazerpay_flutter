@@ -46,7 +46,8 @@ class LazerpayInitializeModel {
 
   String toJson() => json.encode(toMap());
 
-  factory LazerpayInitializeModel.fromJson(String source) => LazerpayInitializeModel.fromMap(json.decode(source));
+  factory LazerpayInitializeModel.fromJson(String source) =>
+      LazerpayInitializeModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -56,20 +57,20 @@ class LazerpayInitializeModel {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is LazerpayInitializeModel &&
-      other.message == message &&
-      other.status == status &&
-      other.data == data &&
-      other.statusCode == statusCode;
+        other.message == message &&
+        other.status == status &&
+        other.data == data &&
+        other.statusCode == statusCode;
   }
 
   @override
   int get hashCode {
     return message.hashCode ^
-      status.hashCode ^
-      data.hashCode ^
-      statusCode.hashCode;
+        status.hashCode ^
+        data.hashCode ^
+        statusCode.hashCode;
   }
 }
 
@@ -179,7 +180,8 @@ class LazerpayInitializeData {
 
   String toJson() => json.encode(toMap());
 
-  factory LazerpayInitializeData.fromJson(String source) => LazerpayInitializeData.fromMap(json.decode(source));
+  factory LazerpayInitializeData.fromJson(String source) =>
+      LazerpayInitializeData.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -189,39 +191,39 @@ class LazerpayInitializeData {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is LazerpayInitializeData &&
-      other.reference == reference &&
-      other.businessName == businessName &&
-      other.businessEmail == businessEmail &&
-      other.businessLogo == businessLogo &&
-      other.customerName == customerName &&
-      other.customerEmail == customerEmail &&
-      other.address == address &&
-      other.coin == coin &&
-      other.cryptoAmount == cryptoAmount &&
-      other.currency == currency &&
-      other.fiatAmount == fiatAmount &&
-      other.feeInCrypto == feeInCrypto &&
-      other.network == network &&
-      other.acceptPartialPayment == acceptPartialPayment;
+        other.reference == reference &&
+        other.businessName == businessName &&
+        other.businessEmail == businessEmail &&
+        other.businessLogo == businessLogo &&
+        other.customerName == customerName &&
+        other.customerEmail == customerEmail &&
+        other.address == address &&
+        other.coin == coin &&
+        other.cryptoAmount == cryptoAmount &&
+        other.currency == currency &&
+        other.fiatAmount == fiatAmount &&
+        other.feeInCrypto == feeInCrypto &&
+        other.network == network &&
+        other.acceptPartialPayment == acceptPartialPayment;
   }
 
   @override
   int get hashCode {
     return reference.hashCode ^
-      businessName.hashCode ^
-      businessEmail.hashCode ^
-      businessLogo.hashCode ^
-      customerName.hashCode ^
-      customerEmail.hashCode ^
-      address.hashCode ^
-      coin.hashCode ^
-      cryptoAmount.hashCode ^
-      currency.hashCode ^
-      fiatAmount.hashCode ^
-      feeInCrypto.hashCode ^
-      network.hashCode ^
-      acceptPartialPayment.hashCode;
+        businessName.hashCode ^
+        businessEmail.hashCode ^
+        businessLogo.hashCode ^
+        customerName.hashCode ^
+        customerEmail.hashCode ^
+        address.hashCode ^
+        coin.hashCode ^
+        cryptoAmount.hashCode ^
+        currency.hashCode ^
+        fiatAmount.hashCode ^
+        feeInCrypto.hashCode ^
+        network.hashCode ^
+        acceptPartialPayment.hashCode;
   }
 }
