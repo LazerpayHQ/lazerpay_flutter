@@ -97,7 +97,7 @@ class LazerPayHtml {
           window.addEventListener("click", (event) => {
 
           let path = event.composedPath()[0].innerHTML;
-          if (path == "Copied" || path == "Copy" || path == "")
+          if (path == "Copied" || path == "Copy")
               sendMessage({"type": "$ON_COPY", "data": path}) 
           });
         }
