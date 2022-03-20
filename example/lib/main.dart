@@ -78,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () async {
                       await LazerPayView(
                         data: LazerPayData(
+                          acceptPartialPayment: true,
                           publicKey:
                               "pk_live_0N24k7lsrr7NGfrDQpIjPGy9z61LkXjUqxX3r99XblXHemwMht",
                           name: "Njoku Favour",

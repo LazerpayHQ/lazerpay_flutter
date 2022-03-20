@@ -1,70 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lazerpay</title>
-    <script
-      src="https://cdn.jsdelivr.net/gh/LazerPay-Finance/checkout-build@main/checkout@1.0.1/dist/index.js"
-      type="text/javascript"
-    >
-  </script>
-  </head>
 
-  <body
-    onload="setupLazerCheckout()"
-    style="
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lazerpay</title>
+  <script src="https://cdn.jsdelivr.net/gh/LazerPay-Finance/checkout-build@main/checkout@1.0.1/dist/index.js"
+    type="text/javascript">
+    </script>
+</head>
+
+<body onload="setupLazerCheckout()" style="
       border-radius: 20px;
       background-color: #fff;
       height: 100vh;
       overflow: hidden;
-    "
-  >
-    <script type="text/javascript">
-      window.onload = setupLazerCheckout;
+    ">
+  <script type="text/javascript">
+    window.onload = setupLazerCheckout;
 
 
-      function setupLazerCheckout() {
-        LazerCheckout({
-          name: "Chizi",
-          email: "chiziaruhoma@gmail.com",
-          amount: "1000",
-          key: "pk_live_...",
-          currency: "NGN",
-          onClose: (data) =>
-            sendMessage({
-              type: "$ON_CLOSE",
-            }),
-          callback: (data) =>
-            sendMessage({
-              type: "$ON_SUCCESS",
-              data: { ...data },
-            }),
-          onError: (data) =>
-            sendMessage({
-              type: "$ON_ERROR",
-              data: { ...data },
-            }),
-        });
+    window.parent.addEventListener('copy', function (e) {
+      e.clipboardData.setData(e.type, e.data);
+      console.log(e.clipboardData.getData(e.type));
+      e.preventDefault(); // We want our data, not data from any selection, to be written to the clipboard
+    });
 
-        // Add EventListener for onMessage Event
-        window.addEventListener("message", (event) => {
-          sendMessage(event.data);
-        });
 
-        // Send callback to dart JSMessageClient
-        function sendMessage(message) {
-          console.log(JSON.stringify(message));
-        }
+    function setupLazerCheckout() {
+      LazerCheckout({
+        name: "Chizi",
+        email: "chiziaruhoma@gmail.com",
+        amount: "1000",
+        key: "pk_live_speggQJcM2FEZAdjkeuWvpqBfXUpUkjy50099CvrNRyow8hKv9",
+        currency: "NGN",
+        onClose: (data) =>
+          sendMessage({
+            type: "$ON_CLOSE",
+          }),
+        callback: (data) =>
+          sendMessage({
+            type: "$ON_SUCCESS",
+            data: { ...data },
+          }),
+        onError: (data) =>
+          sendMessage({
+            type: "$ON_ERROR",
+            data: { ...data },
+          }),
+      });
 
-        // Send raw callback to dart JSMessageClient
-        function sendMessageRaw(message) {
-          console.log(message);
-        }
+      // Add EventListener for onMessage Event
+      window.addEventListener("message", (event) => {
+        sendMessage(event.data);
+      });
 
-    
+      // Send callback to dart JSMessageClient
+      function sendMessage(message) {
+        console.log(JSON.stringify(message));
       }
-    </script>
-  </body>
+
+      // Send raw callback to dart JSMessageClient
+      function sendMessageRaw(message) {
+        console.log(message);
+      }
+
+
+    }
+  </script>
+</body>
+
 </html>
