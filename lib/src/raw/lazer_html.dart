@@ -79,7 +79,7 @@ class LazerPayHtml {
               reference: "${data.reference}",
               acceptPartialPayment: ${data.acceptPartialPayment},
               currency: "${data.currencyString}",
-              ${data.businessLogo != null && data.businessLogo!.isNotEmpty ? 'businessLogo: "${data.businessLogo}"' : ''},
+              ${data.businessLogo.isNotEmpty ? 'businessLogo: "${data.businessLogo}",' : ''}
               onClose: (data) => sendMessage({
                     "type": "$ON_CLOSE",
                   }),

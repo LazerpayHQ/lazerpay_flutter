@@ -1,3 +1,6 @@
+## [1.0.3+2]
+minor bug fix
+
 ## [1.0.3+1]
 minor bug fix
 
