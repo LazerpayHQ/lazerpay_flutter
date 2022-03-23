@@ -20,7 +20,7 @@ class LazerPayData with EquatableMixin {
   final String businessLogo;
 
   /// The amount
-  final int amount;
+  final String amount;
 
   /// Lazerpay currency type
   final LazerPayCurency currency;
@@ -51,7 +51,7 @@ class LazerPayData with EquatableMixin {
     String? publicKey,
     String? name,
     String? firstName,
-    int? amount,
+    String? amount,
     LazerPayCurency? currency,
     String? reference,
     bool? acceptPartialPayment,
