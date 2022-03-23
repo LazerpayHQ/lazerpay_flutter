@@ -1,3 +1,6 @@
+## [1.0.3+3
+increase modal height
+
 ## [1.0.3+2]
 minor bug fix
 

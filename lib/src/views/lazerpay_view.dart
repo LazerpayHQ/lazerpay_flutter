@@ -10,7 +10,6 @@ import 'package:lazerpay_flutter/src/model/lazerpay_event_model.dart';
 import 'package:lazerpay_flutter/src/raw/lazer_html.dart';
 import 'package:lazerpay_flutter/src/utils/colors.dart';
 import 'package:lazerpay_flutter/src/utils/functions.dart';
-import 'package:lazerpay_flutter/src/utils/pretty_json.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:lazerpay_flutter/src/const/const.dart';
 import 'package:lazerpay_flutter/src/widgets/lazerpay_loader.dart';
@@ -76,7 +75,7 @@ class LazerPayView extends StatefulWidget {
             topRight: Radius.circular(10),
           ),
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.9,
+            height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
