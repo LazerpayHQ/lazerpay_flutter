@@ -17,12 +17,12 @@ class MyApp extends StatelessWidget {
         systemNavigationBarColor: Colors.white,
       ),
       child: MaterialApp(
-        title: 'LazerPay Flutter Demo',
+        title: 'Lazerpay Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        home: MyHomePage(title: 'LazerPay Demo'),
+        home: MyHomePage(title: 'Lazerpay Demo'),
       ),
     );
   }
@@ -80,13 +80,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         data: LazerPayData(
                           acceptPartialPayment: true,
                           publicKey:
-                              "pk_live_0N24k7lsrr7NGfrDQpIjPGy9z61LkXjUqxX3r99XblXHemwMht",
-                          name: "Njoku Favour",
-                          email: "test@gmail.com",
+                              "pk_live_QiRW6zZYS2ik2FTvxazblo6aWRKRgiyavW37ZxJXl59sIKoyUh",
+                          name: "Abdulfatai Suleiman",
+                          email: "abdulfataisuleiman67@gmail.com",
                           amount: '1.5',
                           businessLogo:
-                              'https://assets.audiomack.com/fireboydml/bbbd8710eff038d4f603cc39ec94a6a6c2c5b6f4100b28d62557d10d87246f27.jpeg?width=340&height=340&max=true',
-                          currency: LazerPayCurency.USD,
+                              'https://securecdn.pymnts.com/wp-content/uploads/2021/12/stablecoins.jpg',
+                          currency: LazerPayCurency.USD
+
                         ),
                         showLogs: true,
                         onInitialize: (data) {
