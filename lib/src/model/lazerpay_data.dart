@@ -31,6 +31,9 @@ class LazerPayData with EquatableMixin {
   /// Accept partial payments
   final String reference;
 
+  // The metadata
+  final Map<String, dynamic> metadata;
+
   /// Lazerpay currency type as String
   String get currencyString => describeEnum(currency);
 
@@ -45,6 +48,7 @@ class LazerPayData with EquatableMixin {
     this.reference = '',
     this.acceptPartialPayment = false,
     this.currency = LazerPayCurency.NGN,
+    this.metadata = const {},
   });
 
   LazerPayData copyWith({
@@ -56,6 +60,7 @@ class LazerPayData with EquatableMixin {
     String? reference,
     bool? acceptPartialPayment,
     String? email,
+    Map<String, dynamic>? metadata,
   }) {
     return LazerPayData(
       publicKey: publicKey ?? this.publicKey,
@@ -66,6 +71,7 @@ class LazerPayData with EquatableMixin {
       reference: reference ?? this.reference,
       currency: currency ?? this.currency,
       acceptPartialPayment: acceptPartialPayment ?? this.acceptPartialPayment,
+      metadata: metadata ?? this.metadata,
     );
   }
 
@@ -79,6 +85,7 @@ class LazerPayData with EquatableMixin {
       'reference': reference,
       'currency': describeEnum(currency),
       'acceptPartialPayment': acceptPartialPayment,
+      'metadata': metadata,
     };
   }
 
@@ -93,6 +100,7 @@ class LazerPayData with EquatableMixin {
       currency:
           map['currency'] == 'NGN' ? LazerPayCurency.NGN : LazerPayCurency.USD,
       acceptPartialPayment: map['acceptPartialPayment'],
+      metadata: map['metadata'] ?? {},
     );
   }
 
@@ -114,5 +122,6 @@ class LazerPayData with EquatableMixin {
         currency,
         businessLogo,
         acceptPartialPayment,
+        metadata,
       ];
 }

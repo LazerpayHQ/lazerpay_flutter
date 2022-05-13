@@ -80,6 +80,7 @@ class LazerPayHtml {
               acceptPartialPayment: ${data.acceptPartialPayment},
               currency: "${data.currencyString}",
               ${data.businessLogo.isNotEmpty ? 'businessLogo: "${data.businessLogo}",' : ''}
+              metadata: ${data.metadata.isNotEmpty ? '${data.metadata}' : '{}'},
               onClose: (data) => sendMessage({
                     "type": "$ON_CLOSE",
                   }),
