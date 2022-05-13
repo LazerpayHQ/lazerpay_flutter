@@ -1,6 +1,6 @@
-# Flutter LazerPay
+# Flutter Lazerpay
 
-This package makes it easy to use the LazerPay in a flutter project.
+This package makes it easy to use the Lazerpay in a flutter project.
 
 ## 📸 Screen Shots
 
