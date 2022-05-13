@@ -87,6 +87,8 @@ class LazerpayInitializeData {
   final String currency;
   final int fiatAmount;
   final double feeInCrypto;
+  final double fiatRate;
+  final double cryptoRate;
   final String network;
   final bool acceptPartialPayment;
   LazerpayInitializeData({
@@ -102,6 +104,8 @@ class LazerpayInitializeData {
     required this.currency,
     required this.fiatAmount,
     required this.feeInCrypto,
+    required this.fiatRate,
+    required this.cryptoRate,
     required this.network,
     required this.acceptPartialPayment,
   });
@@ -119,6 +123,8 @@ class LazerpayInitializeData {
     String? currency,
     int? fiatAmount,
     double? feeInCrypto,
+    double? fiatRate,
+    double? cryptoRate,
     String? network,
     bool? acceptPartialPayment,
   }) {
@@ -135,6 +141,8 @@ class LazerpayInitializeData {
       currency: currency ?? this.currency,
       fiatAmount: fiatAmount ?? this.fiatAmount,
       feeInCrypto: feeInCrypto ?? this.feeInCrypto,
+      fiatRate: fiatRate ?? this.fiatRate,
+      cryptoRate: cryptoRate ?? this.cryptoRate,
       network: network ?? this.network,
       acceptPartialPayment: acceptPartialPayment ?? this.acceptPartialPayment,
     );
@@ -154,6 +162,8 @@ class LazerpayInitializeData {
       'currency': currency,
       'fiatAmount': fiatAmount,
       'feeInCrypto': feeInCrypto,
+      'fiatRate': fiatRate,
+      'cryptoRate': cryptoRate,
       'network': network,
       'acceptPartialPayment': acceptPartialPayment,
     };
@@ -173,6 +183,8 @@ class LazerpayInitializeData {
       currency: map['currency'] ?? '',
       fiatAmount: map['fiatAmount']?.toInt() ?? 0,
       feeInCrypto: map['feeInCrypto']?.toDouble() ?? 0.0,
+      fiatRate: map['fiatRate']?.toDouble() ?? 0.0,
+      cryptoRate: map['cryptoRate']?.toDouble() ?? 0.0,
       network: map['network'] ?? '',
       acceptPartialPayment: map['acceptPartialPayment'] ?? false,
     );
@@ -185,7 +197,7 @@ class LazerpayInitializeData {
 
   @override
   String toString() {
-    return 'Data(reference: $reference, businessName: $businessName, businessEmail: $businessEmail, businessLogo: $businessLogo, customerName: $customerName, customerEmail: $customerEmail, address: $address, coin: $coin, cryptoAmount: $cryptoAmount, currency: $currency, fiatAmount: $fiatAmount, feeInCrypto: $feeInCrypto, network: $network, acceptPartialPayment: $acceptPartialPayment)';
+    return 'Data(reference: $reference, businessName: $businessName, businessEmail: $businessEmail, businessLogo: $businessLogo, customerName: $customerName, customerEmail: $customerEmail, address: $address, coin: $coin, cryptoAmount: $cryptoAmount, currency: $currency, fiatAmount: $fiatAmount, feeInCrypto: $feeInCrypto, network: $network, acceptPartialPayment: $acceptPartialPayment, fiatRate: $fiatRate, cryptoRate: $cryptoRate)';
   }
 
   @override
@@ -205,6 +217,8 @@ class LazerpayInitializeData {
         other.currency == currency &&
         other.fiatAmount == fiatAmount &&
         other.feeInCrypto == feeInCrypto &&
+        other.fiatRate == fiatRate &&
+        other.cryptoRate == cryptoRate &&
         other.network == network &&
         other.acceptPartialPayment == acceptPartialPayment;
   }
@@ -223,6 +237,8 @@ class LazerpayInitializeData {
         currency.hashCode ^
         fiatAmount.hashCode ^
         feeInCrypto.hashCode ^
+        fiatRate.hashCode ^
+        cryptoRate.hashCode ^
         network.hashCode ^
         acceptPartialPayment.hashCode;
   }
