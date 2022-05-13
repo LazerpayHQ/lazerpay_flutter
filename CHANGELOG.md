@@ -1,3 +1,5 @@
+## [1.0.6]
+Added support to pass metadata on payment initialization
 ## [1.0.5]
 Update dependencies
 
