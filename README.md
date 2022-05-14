@@ -42,6 +42,9 @@ import 'package:lazerpay_flutter/lazerpay_flutter.dart';
                amount: 1000,
                currency: LazerPayCurency.USD,
                acceptPartialPayment: true // By default it's false
+               metadata: {
+                  'product_id': '324324324324',
+               }, // Metadata is an optional param
             ),
             showLogs: true,
             onInitialize: (data) {

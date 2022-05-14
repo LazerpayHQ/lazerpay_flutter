@@ -86,8 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           amount: '1.5',
                           businessLogo:
                               'https://securecdn.pymnts.com/wp-content/uploads/2021/12/stablecoins.jpg',
-                          currency: LazerPayCurency.USD
-
+                          currency: LazerPayCurency.USD,
+                          metadata: {
+                            'product_id': '324324324324',
+                          },
                         ),
                         showLogs: true,
                         onInitialize: (data) {
