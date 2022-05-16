@@ -1,4 +1,4 @@
-## [1.0.6]
+## [1.0.7]
 Fixed transaction initialize metadata issue to accept dynamic data
 ## [1.0.6]
 Added support to pass metadata on payment initialization
