@@ -1,5 +1,6 @@
 import 'package:lazerpay_flutter/lazerpay_flutter.dart';
 import 'package:lazerpay_flutter/src/const/const.dart';
+import 'dart:convert';
 
 class LazerPayHtml {
   /// Raw mono html formation
@@ -80,7 +81,7 @@ class LazerPayHtml {
               acceptPartialPayment: ${data.acceptPartialPayment},
               currency: "${data.currencyString}",
               ${data.businessLogo.isNotEmpty ? 'businessLogo: "${data.businessLogo}",' : ''}
-              metadata: ${data.metadata.isNotEmpty ? '${data.metadata}' : '{}'},
+              metadata: ${data.metadata.isNotEmpty ? '${json.encode(data.metadata)}' : '{}'},
               onClose: (data) => sendMessage({
                     "type": "$ON_CLOSE",
                   }),
