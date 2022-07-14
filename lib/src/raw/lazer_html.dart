@@ -12,7 +12,7 @@ class LazerPayHtml {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lazerpay</title>
-    <script src="https://cdn.jsdelivr.net/gh/LazerPay-Finance/checkout-build@main/checkout@1.0.1/dist/index.js" type="text/javascript"></script>
+    <script src="https://js.lazerpay.finance/v1/index.min.js" type="text/javascript"></script>
 </head>
 
 <body onload="setupLazerCheckout()" style="border-radius: 20px; background-color:#fff;height:100vh;overflow: hidden; ">
